@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ryanbowman19.github.io/waveland-library/sitemap.xml
+Sitemap: https://waveland.lib.in.us/sitemap.xml
