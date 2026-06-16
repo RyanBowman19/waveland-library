@@ -1,0 +1,15 @@
+Drop photo files into this folder with these exact names:
+
+  library-exterior.jpg   — Outside of the building (front or side view)
+  library-interior.jpg   — Inside shot (shelves, reading area, oak woodwork)
+  library-reading.jpg    — People reading, or a cozy corner of the library
+  library-childrens.jpg  — The children's section (west side of the building)
+
+Tips:
+- JPG format works best for photos
+- Aim for at least 800px wide for good quality
+- Good sources: the library's Facebook page, photos staff have taken,
+  or ask Christy if she has any on file
+- Right-click any photo on the Facebook page → Save image as →
+  rename it to one of the names above → drop it in this folder
+- After adding photos, tell Claude Code and it will push them live
