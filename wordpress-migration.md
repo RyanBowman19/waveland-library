@@ -36,7 +36,7 @@ Go to **Appearance → Editor → Styles → (the paintbrush/CSS icon) → Addit
 /* ===== paste everything from css/style.css below this line ===== */
 ```
 
-Then open `css/style.css` in this project (586 lines) and paste its **entire contents** right after that line. That one file is what gives you the brick-red/golden-oak look, the cards, the timeline, all of it.
+Then open `css/style.css` in this project (656 lines) and paste its **entire contents** right after that line. That one file is what gives you the brick-red/golden-oak look, the cards, the timeline, the styled contact cards, the policy cards, the logo styling — all of it.
 
 Add this small extra snippet at the very end, so the native Hours/Board/Staff tables match the site's style without any extra work:
 
@@ -47,9 +47,26 @@ Add this small extra snippet at the very end, so the native Hours/Board/Staff ta
 .wp-block-table.hours-table tr:last-child td { border-bottom:none; }
 ```
 
-## Step 3 — Build the Header (once)
+## Step 3 — Upload the images to the Media Library
 
-Go to **Appearance → Editor → Templates → (or Template Parts) → Header**. Delete whatever's there, add a **Custom HTML** block, and paste:
+The site now uses **real photos** (the old placeholders are gone). Before building the pages, upload each of these to **Media → Add New**, then click the uploaded file and copy its **File URL** — you'll paste those URLs into the HTML blocks later, replacing the `images/...` paths.
+
+| File in this project | Where it's used | Replace this path with the Media URL |
+|---|---|---|
+| `images/library-logo.jpg` | Header brand mark (every page) | `images/library-logo.jpg` |
+| `images/library-exterior.jpg` | Home — the photo beside the Emerson quote | `images/library-exterior.jpg` |
+| `images/library-exterior-sketch.jpg` | About — Historical Photos (sketch card) | `images/library-exterior-sketch.jpg` |
+| `images/andrew_carnegie.jpg` | About — Historical Photos (Carnegie card) | `images/andrew_carnegie.jpg` |
+| `images/andrew-carnegie-gettyimages-640453979.avif` | About — Carnegie card, preferred format (optional) | `images/andrew-carnegie-gettyimages-640453979.avif` |
+| `images/LibraryPassportLogo-removebg-preview.png` | Services — Indiana Library Passport card | `images/LibraryPassportLogo-removebg-preview.png` |
+
+> **Tip:** keep a scratch note pairing each filename with the URL WordPress gives it (they look like `https://yoursite.org/wp-content/uploads/2026/06/library-logo.jpg`). Then it's a quick find-and-replace when you paste each block.
+
+> **Two small notes on the Carnegie photo:** (1) The site uses a `<picture>` element that loads the modern `.avif` first and falls back to the `.jpg`. If that feels fussy, you can drop the `<source>` line and just use the `.jpg` — it looks identical. (2) That `.avif` is a Getty Images stock photo; if this goes on the public live site, confirm you have a license, or swap in a public-domain Carnegie portrait (he died in 1919, so pre-1929 images are public domain in the US). I can help find one.
+
+## Step 4 — Build the Header (once)
+
+Go to **Appearance → Editor → Templates → (or Template Parts) → Header**. Delete whatever's there, add a **Custom HTML** block, and paste the following — then replace `LIBRARY-LOGO-URL` with the Media Library URL for `library-logo.jpg` from Step 3:
 
 ```html
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -61,7 +78,7 @@ Go to **Appearance → Editor → Templates → (or Template Parts) → Header**
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="brand">
-      <div class="brand-mark" aria-hidden="true">📖</div>
+      <div class="brand-mark"><img src="LIBRARY-LOGO-URL" alt="" aria-hidden="true" class="brand-logo-img"></div>
       <div class="brand-text">
         <div class="brand-name">Waveland-Brown Township Public Library</div>
         <div class="brand-tagline">A Carnegie Library &middot; Est. 1915</div>
@@ -100,9 +117,9 @@ Go to **Appearance → Editor → Templates → (or Template Parts) → Header**
 </script>
 ```
 
-**Note:** I changed the links from `index.html`/`about.html` etc. to `/`, `/about/`, `/events/` style — that's how WordPress page URLs normally work. When you create each page in Step 5, check its actual URL slug (shown under the page title when editing) and fix these links if they don't match.
+**Note:** I changed the links from `index.html`/`about.html` etc. to `/`, `/about/`, `/events/` style — that's how WordPress page URLs normally work. When you create each page in Step 6, check its actual URL slug (shown under the page title when editing) and fix these links if they don't match.
 
-## Step 4 — Build the Footer (once)
+## Step 5 — Build the Footer (once)
 
 **Appearance → Editor → Template Parts → Footer**. Custom HTML block:
 
@@ -145,13 +162,13 @@ Go to **Appearance → Editor → Templates → (or Template Parts) → Header**
 
 Same note as above — fix the `/about/`, `/events/` etc. links once you know each page's real slug.
 
-## Step 5 — Build each page
+## Step 6 — Build each page
 
 For each page below: **Pages → Add New**, give it the title shown, then add the blocks listed in order.
 
 ### Home (set as homepage in Settings → Reading)
 
-1. **Custom HTML block:**
+1. **Custom HTML block** — the hero, mission, "Explore the Library" cards, and the start of the "Our Story" two-column row (this block leaves the `prose` column open; the hours panel comes next as a native block):
 ```html
 <section class="hero">
   <span class="est">Serving Our Community Since 1915</span>
@@ -203,14 +220,15 @@ For each page below: **Pages → Add New**, give it the title shown, then add th
 </section>
 
 <section class="band">
-  <div class="container two-col">
-    <div class="prose">
-      <p class="section-kicker">Our Story</p>
-      <h2 class="section-title">A Carnegie Library, Built by the Community</h2>
-      <p>The Waveland-Brown Township Public Library was built in Montgomery County, Indiana starting in the fall of 1914 using matching funds from Andrew Carnegie. The library has been serving the community since 1915 — and still operates from the original building.</p>
-      <p>Step inside and you'll find the original golden oak woodwork, the first reading tables still in use, and a painting by world-renowned artist T.C. Steele — one of Waveland's most famous sons — hanging in its intended spot above the fireplace.</p>
-      <a href="/about/" class="btn btn-brick">Read Our Full History</a>
-    </div>
+  <div class="container">
+    <div class="two-col">
+      <div class="prose">
+        <p class="section-kicker">Our Story</p>
+        <h2 class="section-title">A Carnegie Library, Built by the Community</h2>
+        <p>The Waveland-Brown Township Public Library was built in Montgomery County, Indiana starting in the fall of 1914 using matching funds from Andrew Carnegie. The library has been serving the community since 1915 — and still operates from the original building.</p>
+        <p>Step inside and you'll find the original golden oak woodwork, the first reading tables still in use, and a painting by world-renowned artist T.C. Steele — one of Waveland's most famous sons — hanging in its intended spot above the fireplace.</p>
+        <a href="/about/" class="btn btn-brick">Read Our Full History</a>
+      </div>
 ```
 2. **Group block** — Advanced settings → Additional CSS class(es): `info-panel`. Inside it add:
    - **Heading block**: "Visit Us"
@@ -226,17 +244,21 @@ For each page below: **Pages → Add New**, give it the title shown, then add th
      | Saturday | 9:00 – 1:00 |
      | Sunday | Closed |
    - **Paragraph block**: "Questions? Call 765-435-2700." (make the number a link to `tel:+17654352700`)
-3. **Custom HTML block** (closes the two-col div from step 1, then the rest of the page):
+3. **Custom HTML block** — this closes the two-column row, then adds the **library photo + Emerson quote card** and the "Free Library Card" section. Replace `LIBRARY-EXTERIOR-URL` with the Media URL for `library-exterior.jpg`:
 ```html
-  </div>
-</section>
+    </div>
 
-<section class="band dark">
-  <div class="container">
-    <blockquote class="pull-quote">
-      "I cannot remember the books I've read any more than the meals I have eaten; even so, they have made me."
-      <cite>— Ralph Waldo Emerson, 1803–1882</cite>
-    </blockquote>
+    <div class="two-col" style="margin-top:2rem; border:1px solid #e6dcc8; border-top:4px solid var(--oak); border-radius:6px; overflow:hidden; box-shadow:0 2px 8px rgba(84,33,26,0.07); gap:0;">
+      <img src="LIBRARY-EXTERIOR-URL"
+           alt="Front exterior of the Waveland-Brown Township Public Library Carnegie building"
+           style="width:100%; height:100%; min-height:260px; object-fit:cover; display:block;">
+      <div style="background:var(--white); padding:2rem; display:flex; align-items:center;">
+        <blockquote style="font-family:var(--serif); font-style:italic; font-size:1.05rem; line-height:1.75; color:var(--ink); margin:0; border-left:4px solid var(--oak); padding-left:1.2rem;">
+          "I cannot remember the books I've read any more than the meals I have eaten; even so, they have made me."
+          <cite style="display:block; margin-top:1rem; font-style:normal; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);">— Ralph Waldo Emerson, 1803–1882</cite>
+        </blockquote>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -250,57 +272,67 @@ For each page below: **Pages → Add New**, give it the title shown, then add th
 </section>
 ```
 
-(I left out the photo strip for now since there are no real photos yet — see "Photos" note at the bottom.)
-
 ### About & History
 
-One big Custom HTML block with the page-hero, Beginnings, Building (+ Building Facts), Fun Facts grid, Celebrations timeline, and Librarians timeline sections — copy these straight from `about.html` lines 51–150, they don't need to change. **Stop before the Board of Trustees section.**
+1. **One big Custom HTML block** — copy `about.html` lines **51–189** straight across: the page-hero, Beginnings, The Carnegie Library Building (+ Building Facts), **Historical Photos** (sketch + Carnegie cards), Fun Facts grid, Celebrations timeline, and Librarians timeline. **Stop right before the Board of Trustees section.**
+   - In the **Historical Photos** part, replace the two image paths with their Media URLs: `library-exterior-sketch.jpg` (sketch card) and `andrew_carnegie.jpg` (Carnegie card). If you kept the `<picture>`/`.avif` setup, also replace the `.avif` path in the `<source>` line; otherwise delete that `<source>` line and just use the `.jpg`.
 
-Then:
+2. **Board of Trustees** — a **Group block**, class `band alt`, containing a **Group** class `container`, containing:
+   - Paragraph "Leadership" (class `section-kicker`), Heading "Board of Trustees" (class `section-title`), Paragraph with the board's meeting-schedule blurb
+   - **Table block**, class `hours-table`, columns "Name" / "Role":
 
-- **Group block**, class `band alt`, containing a **Group** class `container`, containing:
-  - Paragraph "Leadership" (class `section-kicker`), Heading "Board of Trustees" (class `section-title`), Paragraph with the board's meeting-schedule blurb
-  - **Table block**, class `hours-table`, columns "Name" / "Role":
+     | Name | Role |
+     |---|---|
+     | Kim Nixon | President |
+     | Megan Fullenwider | Vice President |
+     | Lorraine Waling | Secretary |
+     | Sarah Phillips | Treasurer |
+     | Donna Sabolick | Trustee |
+     | Jerri King | Trustee |
+     | Paula Finch | Trustee |
 
-    | Name | Role |
-    |---|---|
-    | Kim Nixon | President |
-    | Megan Fullenwider | Vice President |
-    | Lorraine Waling | Secretary |
-    | Sarah Phillips | Treasurer |
-    | Donna Sabolick | Trustee |
-    | Jerri King | Trustee |
-    | Paula Finch | Trustee |
+3. **Library Staff** — same Group + Table pattern:
 
-- Same pattern for **Library Staff**:
+     | Name | Role |
+     |---|---|
+     | Christy Roark | Director |
+     | Carol Coffman | Library Aide |
+     | Kerri Simpson | Library Aide |
+     | Karen Myers | Library Aide |
 
-    | Name | Role |
-    |---|---|
-    | Christy Roark | Director |
-    | Carol Coffman | Library Aide |
-    | Kerri Simpson | Library Aide |
-    | Karen Myers | Library Aide |
-
-- Final Custom HTML block with the closing pull-quote section (`about.html` lines 183–190).
+4. **Final Custom HTML block** — the closing centennial pull-quote section (`about.html` lines **222–229**):
+```html
+<section class="band dark">
+  <div class="container">
+    <blockquote class="pull-quote">
+      "The doctors and teachers are mainly gone and not too many businesses are left, but the people still try to take care of the library's needs 100 years later."
+      <cite>— From our Centennial History</cite>
+    </blockquote>
+  </div>
+</section>
+```
 
 ### Services, Research, Policies
 
-These barely ever change — just paste the full `<main>...</main>` inner content (minus the page-hero-to-footer boilerplate you already know to strip) from `services.html`, `research.html`, `policies.html` into one Custom HTML block per page, unchanged.
+These barely ever change — paste the full `<main>...</main>` inner content (minus the page-hero-to-footer boilerplate you already know to strip) from `services.html`, `research.html`, `policies.html` into one Custom HTML block per page, unchanged.
+
+- **Services:** includes the **Indiana Library Passport** card — remember to replace its image path with the Media URL for `LibraryPassportLogo-removebg-preview.png`.
+- **Policies:** the policies are now a grid of styled cards (each with an emoji badge); it's all in that one Custom HTML block, nothing extra to wire up.
 
 ### Contact
 
-One Custom HTML block for the page-hero, the Visit/Call/Facebook cards, and the map iframe — but **skip the "Hours" card** in `contact-grid`. After the Custom HTML block, add:
+One Custom HTML block for the page-hero and the Visit / Call / Facebook cards, and the map iframe — but **skip the "Hours" card** in `contact-grid`. After the Custom HTML block, add the Hours as a native block so staff can edit it:
 
 - **Group block**, class `contact-item`, containing:
   - Paragraph: "🕐" (class `big-icon`)
   - Heading: "Hours"
   - **Table block**, class `hours-table` (same 7 rows as the Home page table above)
 
-Then a final Custom HTML block with the map and the "Our Historic Building" two-column section (`contact.html` lines 88–106).
+Then a final Custom HTML block with the map and the "Our Historic Building" two-column section (the last `<section>` near the end of `contact.html`).
 
 ### Events — the one that changes most often
 
-Custom HTML block for the page-hero and the board-meeting notice banner (`events.html` lines 51–60). Then build the program list as real blocks so the director can edit it freely:
+Custom HTML block for the page-hero and the board-meeting notice banner (`events.html` top). Then build the program list as real blocks so the director can edit it freely:
 
 - **Group block**, class `card-grid`. Inside, add one **Group block per program**, each with class `card`, each containing:
   - Paragraph with just the emoji (class `card-icon`)
@@ -318,15 +350,13 @@ Custom HTML block for the page-hero and the board-meeting notice banner (`events
 
   From now on, staff can duplicate one of these Group blocks, change the text, or delete one entirely — no code.
 
-## Step 6 — Menus and homepage
+## Step 7 — Menus and homepage
 
 - **Appearance → Menus** (or the Navigation block if your theme uses one) — only needed if your theme requires a separate registered menu; since the nav is hardcoded into the Header template part above, you likely don't need this.
 - **Settings → Reading** — set the Home page as your homepage.
 
-## Photos
-
-No real photos exist yet — the original build only left placeholders. Once you have them, the cleanest WordPress-native way is to skip the old `images/library-*.jpg` placeholder code entirely and use **Media Library → upload photo → Image block** on the Home and About pages instead. That's also one-click-editable by staff going forward.
-
 ## A note on what you're trading off
 
-This setup makes Hours/Board/Staff/Events fully staff-safe. Everything else (page layout, header, footer, the Services/Research/Policies wording) still lives in Custom HTML blocks — editable, but a wrong deleted tag could break the layout. That's an intentional choice: that content almost never changes, so it's not worth the much larger effort of converting every paragraph into native blocks. If that ever turns out to be wrong (e.g. policies need frequent updates), the same Group+Paragraph technique used for Events can be applied there too.
+This setup makes Hours/Board/Staff/Events fully staff-safe. Everything else (page layout, header, footer, the photos, the Services/Research/Policies wording) still lives in Custom HTML blocks — editable, but a wrong deleted tag could break the layout. That's an intentional choice: that content almost never changes, so it's not worth the much larger effort of converting every paragraph into native blocks. If that ever turns out to be wrong (e.g. policies need frequent updates), the same Group+Paragraph technique used for Events can be applied there too.
+
+Photos going forward: when you want to swap a photo, the WordPress-native way is **Media Library → upload → copy File URL → paste it over the old URL** in the relevant Custom HTML block. (Or, for a spot you expect staff to change often, replace that `<img>` with a native **Image block**, which is fully click-to-edit.)
