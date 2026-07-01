@@ -760,10 +760,12 @@ main,
 .wp-block-post-content h1,
 .wp-block-post-content h2,
 .wp-block-post-content h3 { font-weight: 700 !important; }
-/* Nav bolder + active-page highlight */
-.nav-inner a { font-weight: 700 !important; }
+/* Nav: bolder, full-height hover highlight, active-page highlight */
+.nav-inner { align-items: stretch !important; }
+.nav-inner a { font-weight: 700 !important; display: flex !important; align-items: center !important; transition: background-color 0.2s ease !important; }
+.nav-inner a:hover { background-color: rgba(255, 255, 255, 0.12) !important; }
 .nav-inner a.active,
-.nav-inner a[aria-current="page"] { border-bottom: 3px solid var(--oak) !important; background-color: rgba(255,255,255,0.08) !important; }
+.nav-inner a[aria-current="page"] { border-bottom: 3px solid var(--oak) !important; background-color: rgba(255, 255, 255, 0.08) !important; }
 /* Two-column cards (photo + quote) side by side */
 .two-col { display: grid !important; grid-template-columns: 1fr 1fr !important; }
 /* Card styling to match the original design */
