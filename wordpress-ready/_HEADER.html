@@ -701,8 +701,21 @@ main,
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
-/* 5. Keep hero buttons side by side */
-.hero .btn { display: inline-block; }
+/* 5. Remove the white gap the theme adds above the hero */
+.wp-site-blocks { padding-top: 0 !important; }
+.wp-block-post-content,
+.is-layout-flow > .wp-block-post-content,
+body .wp-block-group {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+/* 6. Hero: centered, buttons side by side, and the same white/cream/gold
+      text as the standalone site (Twenty Twenty-Four darkens it otherwise) */
+.hero { text-align: center; }
+.hero .btn { display: inline-block; margin: 0.4rem; }
+.hero h1 { color: var(--white) !important; }
+.hero .lede { color: #f3e6d2 !important; }
+.hero .est { color: var(--oak-light) !important; }
 </style>
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
