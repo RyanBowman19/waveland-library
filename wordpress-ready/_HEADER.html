@@ -711,21 +711,26 @@ body .wp-block-group {
   padding-top: 0 !important;
   margin-top: 0 !important;
 }
-/* 6. Hero: centered, buttons side by side, and the same white/cream/gold
-      text as the standalone site (Twenty Twenty-Four darkens it otherwise) */
+/* 6. Dark sections keep light text (the theme darkens headings/quotes).
+      Covers the homepage hero AND every interior page hero. */
 .hero { text-align: center; }
 .hero .btn { display: inline-block; margin: 0.4rem; }
-.hero h1 { color: var(--white) !important; }
+.hero h1, .page-hero h1 { color: var(--white) !important; }
 .hero .lede { color: #f3e6d2 !important; }
 .hero .est { color: var(--oak-light) !important; }
-/* 7. Force the site's fonts — the theme applies its own otherwise.
-      Headings default to the sans font; the specific serif rules above
-      (hero h1, .section-title, .brand-name, blockquotes, policy cards)
-      still win because they're more specific, so it matches exactly. */
+.page-hero p { color: var(--oak-light) !important; }
+.band.dark, .band.dark .pull-quote { color: var(--cream) !important; }
+.band.dark .pull-quote cite { color: var(--oak-light) !important; }
+/* 7. Force the site's fonts, and let headings inherit their section's
+      color like the standalone site does. The specific serif/color rules
+      above are more specific, so they still win where they should. */
 body { font-family: var(--sans) !important; }
-h1, h2, h3, h4, h5, h6 { font-family: var(--sans); }
-/* 8. Remove ALL vertical spacing the theme adds between the header, the
-      page content, and the footer (kills the white/cream gap above the hero) */
+h1, h2, h3, h4, h5, h6 { font-family: var(--sans); color: inherit; }
+/* 8. Hide the theme's auto page title + featured image, and remove ALL
+      vertical spacing between the header, the content, and the footer.
+      This is what leaves the big white gap above each page. */
+.wp-block-post-title,
+.wp-block-post-featured-image { display: none !important; }
 :root, body { --wp--style--block-gap: 0px !important; }
 .wp-site-blocks > * { margin: 0 !important; }
 .wp-block-template-part,
@@ -735,10 +740,8 @@ main,
 .entry-content,
 .is-layout-flow,
 .is-layout-constrained {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  margin-block: 0 !important;
+  padding-block: 0 !important;
 }
 </style>
 
