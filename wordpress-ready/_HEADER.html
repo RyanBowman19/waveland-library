@@ -659,6 +659,20 @@ footer a:hover { color: var(--white); text-decoration: underline; }
   .two-col { grid-template-columns: 1fr; }
   .btn-outline { margin-left: 0; margin-top: 0.8rem; }
 }
+
+/* ============================================================
+   WordPress theme overrides (for Twenty Twenty-Four and similar)
+   - Hides the page title WordPress auto-adds above the content
+   - Lets the hero and sections run full width instead of being
+     boxed inside the theme's narrow container
+   These selectors only exist in WordPress, so they do nothing
+   (and cause no harm) anywhere else.
+   ============================================================ */
+.wp-block-post-title { display: none; }
+.wp-block-post-content { padding: 0 !important; max-width: 100% !important; }
+.wp-block-post-content > .wp-block { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+.entry-content { padding: 0 !important; }
+.hero .btn { display: inline-block; }
 </style>
 
 <a class="skip-link" href="#main-content">Skip to main content</a>

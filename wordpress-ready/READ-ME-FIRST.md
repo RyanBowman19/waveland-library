@@ -76,6 +76,10 @@ Done — visit the site and click through the menu.
   Fix the page's permalink.
 
 ## Notes
+- The Header file already includes fixes for Twenty Twenty-Four's default behavior (it hides the
+  automatic page title WordPress adds, and lets the hero run full width instead of being boxed in).
+  So you do **not** need to touch "Additional CSS" — just make sure you pasted the whole
+  `_HEADER.html`. If you already pasted an older copy of the Header, re-paste this updated one.
 - The fonts load from Google Fonts (standard and free — not tied to anyone's account). Everything
   else lives inside the library's WordPress.
 - This is the "just get it live" version. If you later want staff to edit Hours or Events without
