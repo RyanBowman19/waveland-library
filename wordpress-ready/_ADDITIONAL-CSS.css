@@ -739,3 +739,23 @@ main,
   margin-block: 0 !important;
   padding-block: 0 !important;
 }
+/* 9. Restore component styling the theme overrides */
+/* Buttons — keep text visible and inline (theme blanks/darkens it) */
+.btn { display: inline-block !important; }
+.btn-brick { background-color: var(--brick) !important; color: #fff !important; }
+.btn-brick:hover { color: #fff !important; }
+.btn-outline { background-color: transparent !important; color: #fff !important; border: 2px solid var(--oak-light) !important; }
+.btn-outline:hover { color: #fff !important; }
+.btn-gold { background-color: var(--oak) !important; color: var(--brick-deep) !important; }
+/* Hero buttons side by side */
+.hero { text-align: center !important; }
+.hero .btn { display: inline-block !important; margin: 0.4rem 0.3rem !important; vertical-align: middle !important; }
+/* Topbar visible */
+.topbar { display: block !important; background-color: var(--brick-deep) !important; color: var(--oak-light) !important; text-align: center !important; font-size: 0.9rem !important; padding: 0.45rem 1rem !important; letter-spacing: 0.02em !important; }
+.topbar a { color: #fff !important; font-weight: 600 !important; text-decoration: none !important; }
+/* Nav bolder + active-page highlight */
+.nav-inner a { font-weight: 700 !important; }
+.nav-inner a.active,
+.nav-inner a[aria-current="page"] { border-bottom: 3px solid var(--oak) !important; background-color: rgba(255,255,255,0.08) !important; }
+/* Two-column cards (photo + quote) side by side */
+.two-col { display: grid !important; grid-template-columns: 1fr 1fr !important; }
