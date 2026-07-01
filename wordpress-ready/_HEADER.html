@@ -724,14 +724,21 @@ body .wp-block-group {
       still win because they're more specific, so it matches exactly. */
 body { font-family: var(--sans) !important; }
 h1, h2, h3, h4, h5, h6 { font-family: var(--sans); }
-/* 8. Close the gap between the header and the first section */
+/* 8. Remove ALL vertical spacing the theme adds between the header, the
+      page content, and the footer (kills the white/cream gap above the hero) */
 :root, body { --wp--style--block-gap: 0px !important; }
-.wp-site-blocks > *,
-.wp-site-blocks > * > *,
-.wp-block-template-part { margin-top: 0 !important; margin-block-start: 0 !important; }
-main, .wp-block-post-content, .entry-content {
+.wp-site-blocks > * { margin: 0 !important; }
+.wp-block-template-part,
+.wp-block-group,
+main,
+.wp-block-post-content,
+.entry-content,
+.is-layout-flow,
+.is-layout-constrained {
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
   padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 </style>
 
