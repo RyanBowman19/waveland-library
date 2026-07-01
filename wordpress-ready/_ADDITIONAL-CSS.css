@@ -761,3 +761,6 @@ main,
 .nav-inner a[aria-current="page"] { border-bottom: 3px solid var(--oak) !important; background-color: rgba(255,255,255,0.08) !important; }
 /* Two-column cards (photo + quote) side by side */
 .two-col { display: grid !important; grid-template-columns: 1fr 1fr !important; }
+/* Card links line up along the bottom of each card across a row */
+.card { display: flex !important; flex-direction: column !important; }
+.card .card-link { margin-top: auto !important; }
