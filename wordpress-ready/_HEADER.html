@@ -3,6 +3,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap');
+
 /* ============================================================
    Waveland-Brown Township Public Library
    Historic Carnegie warmth: brick reds, golden oak, warm cream
@@ -716,6 +718,21 @@ body .wp-block-group {
 .hero h1 { color: var(--white) !important; }
 .hero .lede { color: #f3e6d2 !important; }
 .hero .est { color: var(--oak-light) !important; }
+/* 7. Force the site's fonts — the theme applies its own otherwise.
+      Headings default to the sans font; the specific serif rules above
+      (hero h1, .section-title, .brand-name, blockquotes, policy cards)
+      still win because they're more specific, so it matches exactly. */
+body { font-family: var(--sans) !important; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--sans); }
+/* 8. Close the gap between the header and the first section */
+:root, body { --wp--style--block-gap: 0px !important; }
+.wp-site-blocks > *,
+.wp-site-blocks > * > *,
+.wp-block-template-part { margin-top: 0 !important; margin-block-start: 0 !important; }
+main, .wp-block-post-content, .entry-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 </style>
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
