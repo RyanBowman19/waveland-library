@@ -68,6 +68,21 @@ Done — visit the site and click through the menu.
 - **A menu link says "page not found"** → that page's address doesn't match the table in Step 5.
   Fix the page's permalink.
 
+## Optional — keep the CSS in WPCode or "Additional CSS" instead
+The main steps above put the styling inside the Header (in `_HEADER.html`). If you'd rather keep
+the CSS separate (e.g. using the **WPCode** plugin, or WordPress's built-in **Appearance → Editor
+→ Styles → Additional CSS**), use these two files instead of `_HEADER.html`:
+
+- **`_STYLES-for-wpcode.css`** — the full stylesheet. In WPCode: add a new **CSS** snippet, set it
+  to **Auto Insert → Site Wide Header**, paste this whole file, activate. (Or paste it into
+  Additional CSS — no plugin needed.)
+- **`_HEADER-html-only.html`** — the header bar + menu with **no** `<style>` block. Paste this into
+  **Template Parts → Header** instead of `_HEADER.html`.
+
+Do **one or the other** — either the all-in-one `_HEADER.html`, *or* this split pair — not both, so
+the CSS isn't duplicated. Both approaches look identical on the site; the split is just tidier to
+maintain.
+
 ## Notes
 - The Header file already includes fixes for Twenty Twenty-Four's default behavior (it hides the
   automatic page title WordPress adds, and lets the hero run full width instead of being boxed in).
