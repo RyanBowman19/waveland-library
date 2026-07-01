@@ -774,7 +774,7 @@ main,
 .card > p:has(.card-link) { margin-top: auto !important; margin-bottom: 0 !important; text-align: left !important; }
 /* Footer typography to match the original */
 .site-footer h4 { font-family: var(--serif) !important; font-weight: 700 !important; font-size: 1.25rem !important; line-height: 1.5 !important; color: var(--oak-light) !important; }
-.site-footer p, .site-footer li, .site-footer a { font-size: 1.02rem !important; line-height: 1.7 !important; }
+.site-footer p, .site-footer li, .site-footer a { font-family: var(--sans) !important; font-size: 1.05rem !important; line-height: 1.7 !important; }
 .site-footer li { margin-bottom: 0.6rem !important; }
 /* Footer bottom: smaller subtle text + a gap between the two lines */
 .footer-bottom p { font-size: 0.88rem !important; line-height: 1.5 !important; }
