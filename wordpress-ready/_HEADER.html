@@ -662,16 +662,46 @@ footer a:hover { color: var(--white); text-decoration: underline; }
 
 /* ============================================================
    WordPress theme overrides (for Twenty Twenty-Four and similar)
-   - Hides the page title WordPress auto-adds above the content
-   - Lets the hero and sections run full width instead of being
-     boxed inside the theme's narrow container
+   By default the theme squeezes page content into a narrow ~620px
+   column (looks like phone width on a desktop). These rules let the
+   design use the full window; the site's own ".container" still caps
+   real content at 1100px and stays responsive on phones.
    These selectors only exist in WordPress, so they do nothing
    (and cause no harm) anywhere else.
    ============================================================ */
+/* 1. Reset the theme's width + edge-padding variables */
+:root,
+body {
+  --wp--style--global--content-size: 100% !important;
+  --wp--style--global--wide-size: 100% !important;
+  --wp--style--root--padding-left: 0 !important;
+  --wp--style--root--padding-right: 0 !important;
+}
+/* 2. Hide the page title WordPress auto-adds (each page has its own hero) */
 .wp-block-post-title { display: none; }
-.wp-block-post-content { padding: 0 !important; max-width: 100% !important; }
-.wp-block-post-content > .wp-block { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
-.entry-content { padding: 0 !important; }
+/* 3. Let every wrapping container run full width, no side padding */
+.wp-site-blocks,
+main,
+.wp-block-group,
+.wp-block-post-content,
+.entry-content,
+.is-layout-constrained,
+.is-layout-flow {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+/* 4. Un-constrain the direct children the theme narrows */
+.wp-block-post-content > *,
+.entry-content > *,
+.is-layout-constrained > * {
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+/* 5. Keep hero buttons side by side */
 .hero .btn { display: inline-block; }
 </style>
 
