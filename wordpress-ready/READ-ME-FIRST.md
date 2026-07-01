@@ -7,9 +7,9 @@ website** — once it's in, it's 100% the library's.
 The same move every time: **open a file → Ctrl+A (select all) → Ctrl+C → in WordPress add a
 "Custom HTML" block → Ctrl+V → Save/Publish.**
 
-There are only two kinds of edit you ever make, and both are find-and-replace:
-- Wherever you see **`PASTE_..._URL`**, swap in a photo address (Step 2 explains).
-- Nothing else — links are already done.
+**The photos are already uploaded and their addresses are already baked into these files**, so
+there is **nothing to edit** — just paste each file and publish. (Every image points at the
+library's own Media Library at `waveland.lib.in.us/wp-content/uploads/`.)
 
 ---
 
@@ -17,24 +17,16 @@ There are only two kinds of edit you ever make, and both are find-and-replace:
 **Appearance → Themes → Add New** → search **Twenty Twenty-Four** → **Install** → **Activate**.
 (You need this so "Appearance → Editor" exists.)
 
-## Step 2 — Upload the 5 photos and copy their addresses
-**Media → Add New Media File**, then drag in these 5 files from the project's `images` folder.
-After each uploads, click it and copy its **"File URL."** Paste them into a blank note so you
-have them ready:
-
-| Photo file | When you see this placeholder… | …paste this photo's URL |
-|---|---|---|
-| `library-logo.jpg` | `PASTE_LOGO_URL` | |
-| `library-exterior.jpg` | `PASTE_EXTERIOR_PHOTO_URL` | |
-| `library-exterior-sketch.jpg` | `PASTE_SKETCH_PHOTO_URL` | |
-| `andrew_carnegie.jpg` | `PASTE_CARNEGIE_PHOTO_URL` | |
-| `LibraryPassportLogo-removebg-preview.png` | `PASTE_PASSPORT_LOGO_URL` | |
+## Step 2 — (already done) Photos are uploaded
+The 5 photos are already in the Media Library and their web addresses are already written into
+the files below, so you can skip straight to pasting. For reference, the photos in use are:
+`library-logo.jpg`, `library-exterior.jpg`, `library-exterior-sketch.jpg`,
+`andrew-carnegie-gettyimages-640453979.avif`, and `LibraryPassportLogo-removebg-preview.png`.
 
 ## Step 3 — Paste the Header (one time)
 - **Appearance → Editor → Patterns → Template Parts → Header.** Delete anything there.
 - Add a **Custom HTML** block, paste all of **`_HEADER.html`**.
-- Find **`PASTE_LOGO_URL`** in what you pasted and replace it with the `library-logo.jpg` address.
-- **Save.**
+- **Save.** (The logo address is already in the file — nothing to change.)
 
 *(The Header file also contains the site's entire styling, so do it before viewing any page —
 until it's saved, pages will look like plain text. That's normal.)*
@@ -45,17 +37,17 @@ until it's saved, pages will look like plain text. That's normal.)*
 
 ## Step 5 — Make the 8 pages (one paste each)
 For each row: **Pages → Add New Page**, type the **Title**, add **one Custom HTML block**, paste
-the whole matching file, replace any **`PASTE_..._URL`** placeholders, then **Publish.**
+the whole matching file, then **Publish.** (No edits needed — photos and links are already set.)
 
-| Page Title (type exactly) | Paste this file | Placeholders to replace | Page address should be |
-|---|---|---|---|
-| Home | `home.html` | `PASTE_EXTERIOR_PHOTO_URL` | `/` (set in Step 6) |
-| About & History | `about.html` | `PASTE_EXTERIOR_PHOTO_URL`, `PASTE_SKETCH_PHOTO_URL`, `PASTE_CARNEGIE_PHOTO_URL` | `/about/` |
-| Services | `services.html` | `PASTE_PASSPORT_LOGO_URL` | `/services/` |
-| Research | `research.html` | none | `/research/` |
-| Policies | `policies.html` | none | `/policies/` |
-| Contact | `contact.html` | none | `/contact/` |
-| Events | `events.html` | none | `/events/` |
+| Page Title (type exactly) | Paste this file | Page address should be |
+|---|---|---|
+| Home | `home.html` | `/` (set in Step 6) |
+| About & History | `about.html` | `/about/` |
+| Services | `services.html` | `/services/` |
+| Research | `research.html` | `/research/` |
+| Policies | `policies.html` | `/policies/` |
+| Contact | `contact.html` | `/contact/` |
+| Events | `events.html` | `/events/` |
 
 > When you type the title, WordPress shows the page's web address ("Permalink") under it. It
 > should match the last column (e.g. About should be `/about/`). If it's different, click
@@ -71,7 +63,8 @@ Done — visit the site and click through the menu.
 ## If something looks off
 - **Plain text, no colors/photos** → the Header (Step 3) didn't save, or you didn't paste the
   *whole* `_HEADER.html` (it must start with the `<link ...>` and `<style>` lines). Re-paste it all.
-- **A photo is a broken-image icon** → a `PASTE_..._URL` was missed, or the URL was pasted wrong.
+- **A photo is a broken-image icon** → that photo isn't in the Media Library at the expected
+  address (`waveland.lib.in.us/wp-content/uploads/2026/06/...`). Re-upload it with the same file name.
 - **A menu link says "page not found"** → that page's address doesn't match the table in Step 5.
   Fix the page's permalink.
 
