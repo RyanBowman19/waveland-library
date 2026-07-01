@@ -716,19 +716,11 @@ body .wp-block-group {
 .page-hero p { color: var(--oak-light) !important; }
 .band.dark, .band.dark .pull-quote { color: var(--cream) !important; }
 .band.dark .pull-quote cite { color: var(--oak-light) !important; }
-/* 7. Fonts: match the original. Twenty Twenty-Four forces its own fonts
-      (Cardo/Inter) with !important, so we must use !important too. Body
-      text = Source Sans; only the specific titles = Playfair, exactly like
-      the standalone site (card titles etc. stay sans). */
-body,
-.wp-block-post-content,
-.wp-block-post-content *,
-h1, h2, h3, h4, h5, h6 { font-family: var(--sans) !important; }
-.hero h1, .page-hero h1, h2.section-title, .section-title,
-.brand-name, .policy-item h3, blockquote.pull-quote,
-[style*="var(--serif)"] { font-family: var(--serif) !important; }
-h1, h2, h3, h4, h5, h6 { color: inherit; }
-.wp-block-post-content a { color: var(--brick) !important; }
+/* 7. Force the site's fonts, and let headings inherit their section's
+      color like the standalone site does. The specific serif/color rules
+      above are more specific, so they still win where they should. */
+body { font-family: var(--sans) !important; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--sans); color: inherit; }
 /* 8. Hide the theme's auto page title + featured image, and remove ALL
       vertical spacing between the header, the content, and the footer.
       This is what leaves the big white gap above each page. */
