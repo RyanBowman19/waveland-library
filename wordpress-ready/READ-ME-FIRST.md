@@ -68,20 +68,15 @@ Done — visit the site and click through the menu.
 - **A menu link says "page not found"** → that page's address doesn't match the table in Step 5.
   Fix the page's permalink.
 
-## Optional — keep the CSS in WPCode or "Additional CSS" instead
-The main steps above put the styling inside the Header (in `_HEADER.html`). If you'd rather keep
-the CSS separate (e.g. using the **WPCode** plugin, or WordPress's built-in **Appearance → Editor
-→ Styles → Additional CSS**), use these two files instead of `_HEADER.html`:
+## Where the CSS lives
+Two ways to load the styling — pick **one**, not both (so the CSS isn't duplicated):
 
-- **`_STYLES-for-wpcode.css`** — the full stylesheet. In WPCode: add a new **CSS** snippet, set it
-  to **Auto Insert → Site Wide Header**, paste this whole file, activate. (Or paste it into
-  Additional CSS — no plugin needed.)
-- **`_HEADER-html-only.html`** — the header bar + menu with **no** `<style>` block. Paste this into
-  **Template Parts → Header** instead of `_HEADER.html`.
-
-Do **one or the other** — either the all-in-one `_HEADER.html`, *or* this split pair — not both, so
-the CSS isn't duplicated. Both approaches look identical on the site; the split is just tidier to
-maintain.
+- **All-in-one (simplest):** paste **`_HEADER.html`** into Template Parts → Header. Its styling is
+  built in, so there's nothing else to do for CSS.
+- **Separate CSS (what you're using):** paste **`_ADDITIONAL-CSS.css`** into **Appearance → Editor
+  → Styles → ⋮ → Additional CSS** (this is built into WordPress — no plugin, nothing to install).
+  If you go this route, your Header block should be the header markup only, without a `<style>`
+  block, so the CSS isn't loaded twice.
 
 ## Notes
 - The Header file already includes fixes for Twenty Twenty-Four's default behavior (it hides the
